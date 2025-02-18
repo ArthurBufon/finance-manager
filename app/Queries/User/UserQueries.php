@@ -5,7 +5,7 @@ namespace App\Queries\User;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 
-class TransactionQueries
+class UserQueries
 {
     public function getByCustom(array $filters = [], bool $collection = true): User|Collection|null
     {

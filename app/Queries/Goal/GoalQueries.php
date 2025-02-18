@@ -5,7 +5,7 @@ namespace App\Queries\Goal;
 use App\Models\Goal;
 use Illuminate\Database\Eloquent\Collection;
 
-class CategoryQueries
+class GoalQueries
 {
     public function getByCustom(array $filters = [], bool $collection = true): Goal|Collection|null
     {
