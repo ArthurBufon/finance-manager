@@ -2,16 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\Account\StoreAccountRequest;
+use App\Http\Requests\Account\UpdateAccountRequest;
+use App\Models\Account;
+use App\Services\Account\AccountService;
 
 class AccountController extends Controller
 {
+    public function __construct(private AccountService $service)
+    {
+        //
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return $this->service->index();
     }
 
     /**
@@ -25,9 +33,9 @@ class AccountController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreAccountRequest $request)
     {
-        //
+        return $this->service->store($request->validated());
     }
 
     /**
@@ -49,9 +57,9 @@ class AccountController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateAccountRequest $request, string $id)
     {
-        //
+        return $this->service->update($id, $request->validated());
     }
 
     /**
@@ -59,6 +67,6 @@ class AccountController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return $this->service->delete($id);
     }
 }

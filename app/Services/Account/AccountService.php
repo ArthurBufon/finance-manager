@@ -5,7 +5,7 @@ namespace App\Services\Account;
 use App\Queries\Account\AccountQueries;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class TransactionService
+class AccountService
 {
     public function __construct(
         private AccountQueries $queries

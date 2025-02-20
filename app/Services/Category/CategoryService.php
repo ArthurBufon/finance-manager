@@ -5,7 +5,7 @@ namespace App\Services\Category;
 use App\Queries\Category\CategoryQueries;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class TransactionService
+class CategoryService
 {
     public function __construct(
         private CategoryQueries $queries

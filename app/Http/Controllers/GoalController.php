@@ -2,16 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Goal\StoreGoalRequest;
+use App\Http\Requests\Goal\UpdateGoalRequest;
+use App\Models\Goal;
+use App\Services\Goal\GoalService;
 use Illuminate\Http\Request;
 
 class GoalController extends Controller
 {
+    public function __construct(private GoalService $service)
+    {
+        //
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return $this->service->index();
     }
 
     /**
@@ -25,9 +34,9 @@ class GoalController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreGoalRequest $request)
     {
-        //
+        return $this->service->store($request->validated());
     }
 
     /**
@@ -49,9 +58,9 @@ class GoalController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateGoalRequest $request, string $id)
     {
-        //
+        return $this->service->update($id, $request->validated());
     }
 
     /**
@@ -59,6 +68,6 @@ class GoalController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return $this->service->delete($id);
     }
 }

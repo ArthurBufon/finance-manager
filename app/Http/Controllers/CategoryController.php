@@ -2,16 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\Category\StoreCategoryRequest;
+use App\Http\Requests\Category\UpdateCategoryRequest;
+use App\Models\Category;
+use App\Services\Category\CategoryService;
 
 class CategoryController extends Controller
 {
+    public function __construct(private CategoryService $service)
+    {
+        //
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return $this->service->index();
     }
 
     /**
@@ -25,9 +33,9 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCategoryRequest $request)
     {
-        //
+        return $this->service->store($request->validated());
     }
 
     /**
@@ -49,9 +57,9 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateCategoryRequest $request, string $id)
     {
-        //
+        return $this->service->update($id, $request->validated());
     }
 
     /**
@@ -59,6 +67,6 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return $this->service->delete($id);
     }
 }

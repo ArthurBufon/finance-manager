@@ -5,7 +5,7 @@ namespace App\Services\Goal;
 use App\Queries\Goal\GoalQueries;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class TransactionService
+class GoalService
 {
     public function __construct(
         private GoalQueries $queries
